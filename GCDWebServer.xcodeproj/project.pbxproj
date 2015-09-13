@@ -439,6 +439,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = __GCDWEBSERVER_ENABLE_TESTING__;
@@ -484,6 +485,7 @@
 		CEE28CE41AE004D800F4023C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -491,6 +493,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Frameworks/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pol-online.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = GCDWebServers;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -500,6 +503,7 @@
 		CEE28CE51AE004D800F4023C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -507,6 +511,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Frameworks/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pol-online.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = GCDWebServers;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

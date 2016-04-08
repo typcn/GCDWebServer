@@ -173,7 +173,10 @@ NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension) {
     if (mimeType == nil) {
       CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)extension, NULL);
       if (uti) {
-        mimeType = CFBridgingRelease(UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType));
+        CFStringRef mt_tmp = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType);
+        if(mt_tmp){
+            mimeType = [(__bridge NSString *)(mt_tmp) copy];
+        }
         CFRelease(uti);
       }
     }

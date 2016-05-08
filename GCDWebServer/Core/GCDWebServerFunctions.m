@@ -164,22 +164,18 @@ NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension) {
   if (_overrides == nil) {
     _overrides = [[NSDictionary alloc] initWithObjectsAndKeys:
                   @"text/css", @"css",
+                  @"application/javascript", @"js",
+                  @"text/html", @"html",
+                  @"image/png", @"png",
+                  @"image/svg+xml", @"svg",
+                  @"image/jpeg", @"jpg",
+                  @"application/x-mpegURL", @"m3u8",
                   nil];
   }
   NSString* mimeType = nil;
   extension = [extension lowercaseString];
   if (extension.length) {
     mimeType = [_overrides objectForKey:extension];
-    if (mimeType == nil) {
-      CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)extension, NULL);
-      if (uti) {
-        CFStringRef mt_tmp = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType);
-        if(mt_tmp){
-            mimeType = [(__bridge NSString *)(mt_tmp) copy];
-        }
-        CFRelease(uti);
-      }
-    }
   }
   return mimeType ? mimeType : kGCDWebServerDefaultMimeType;
 }

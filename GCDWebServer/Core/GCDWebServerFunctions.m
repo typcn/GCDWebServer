@@ -159,25 +159,23 @@ NSString* GCDWebServerDescribeData(NSData* data, NSString* type) {
   return [NSString stringWithFormat:@"<%lu bytes>", (unsigned long)data.length];
 }
 
+    
 NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension) {
-  static NSDictionary* _overrides = nil;
-  if (_overrides == nil) {
-    _overrides = [[NSDictionary alloc] initWithObjectsAndKeys:
-                  @"text/css", @"css",
-                  @"application/javascript", @"js",
-                  @"text/html", @"html",
-                  @"image/png", @"png",
-                  @"image/svg+xml", @"svg",
-                  @"image/jpeg", @"jpg",
-                  @"application/x-mpegURL", @"m3u8",
-                  nil];
+  NSDictionary* overrides = @{
+                                 @"text/css": @"css",
+                                 @"application/javascript": @"js",
+                                 @"text/html": @"html",
+                                 @"image/png": @"png",
+                                 @"image/svg+xml": @"svg",
+                                 @"image/jpeg": @"jpg",
+                                 @"application/x-mpegURL": @"m3u8"};
+  if (extension && extension.length) {
+      NSString* mimeType = [overrides objectForKey:[extension lowercaseString]];
+      if(mimeType){
+          return mimeType;
+      }
   }
-  NSString* mimeType = nil;
-  extension = [extension lowercaseString];
-  if (extension.length) {
-    mimeType = [_overrides objectForKey:extension];
-  }
-  return mimeType ? mimeType : kGCDWebServerDefaultMimeType;
+  return kGCDWebServerDefaultMimeType;
 }
 
 NSString* GCDWebServerEscapeURLString(NSString* string) {

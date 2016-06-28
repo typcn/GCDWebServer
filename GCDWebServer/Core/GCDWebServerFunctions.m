@@ -162,13 +162,13 @@ NSString* GCDWebServerDescribeData(NSData* data, NSString* type) {
     
 NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension) {
   NSDictionary* overrides = @{
-                                 @"text/css": @"css",
-                                 @"application/javascript": @"js",
-                                 @"text/html": @"html",
-                                 @"image/png": @"png",
-                                 @"image/svg+xml": @"svg",
-                                 @"image/jpeg": @"jpg",
-                                 @"application/x-mpegURL": @"m3u8"};
+                                 @"css": @"text/css",
+                                 @"js": @"application/javascript",
+                                 @"html": @"text/html",
+                                 @"png": @"image/png",
+                                 @"svg": @"image/svg+xml",
+                                 @"jpg": @"image/jpeg",
+                                 @"m3u8": @"application/x-mpegURL"};
   if (extension && extension.length) {
       NSString* mimeType = [overrides objectForKey:[extension lowercaseString]];
       if(mimeType){
